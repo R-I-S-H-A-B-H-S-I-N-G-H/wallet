@@ -4,10 +4,14 @@ export class Transaction {
 	id: string;
 	date: Date;
 	tags: Set<string>;
+	type: "DEBIT" | "CREDIT";
+	amount: number;
 	constructor() {
 		this.id = generateUUID();
 		this.date = new Date();
 		this.tags = new Set();
+		this.type = "DEBIT";
+		this.amount = 0;
 	}
 
 	addTag(tag: string) {
