@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@ramonak/react-progress-bar": "^5.2.0",
+    "@stylexjs/stylex": "^0.7.5",
+    "react-top-loading-bar": "^2.3.1",
+    "vite-plugin-stylex": "^0.10.1"
+  },
+  "devDependencies": {
+    "@stylexjs/babel-plugin": "^0.7.5",
+    "vite-plugin-stylex-dev": "^0.8.0"
+  }
+}

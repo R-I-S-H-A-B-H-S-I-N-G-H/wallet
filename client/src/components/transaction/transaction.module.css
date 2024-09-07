@@ -1,0 +1,36 @@
+.container {
+	border-radius: 0.5rem;
+	padding: 1rem;
+	margin: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.leftContainer {
+	/* background-color: antiquewhite; */
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	flex: 6;
+}
+.timeContainer {
+	flex: 2;
+}
+.amountContainer {
+	flex: 2;
+	font-weight: bolder;
+}
+
+.tagWrapper {
+	/* background-color: lightcyan; */
+	flex: 4;
+	display: flex;
+	justify-content: space-around;
+}
+.tag {
+	padding: 0.4rem;
+	border-radius: 0.4rem;
+	background-color: palegoldenrod;
+	border: 2px solid darkgoldenrod;
+}
