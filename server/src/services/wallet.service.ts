@@ -77,7 +77,7 @@ export async function createWalletEntry(walletPayLoad: any) {
 	}
 }
 
-export async function addTranaction(walletId: string, transactionPayLoad: any) {
+export async function addTransaction(walletId: string, transactionPayLoad: any) {
 	const { amount, date, tag: tagId, name } = transactionPayLoad;
 
 	if (!walletId) {
@@ -100,13 +100,16 @@ export async function addTranaction(walletId: string, transactionPayLoad: any) {
 
 	const transaction = await createTransaction(transactionPayLoad);
 	if (!transaction) {
-		console.error("ERROR CREATING TRANSATION");
+		console.error("ERROR CREATING TRANSACTION");
 		return null;
 	}
 	wallet.transactions.push(transaction?._id);
 
 	try {
-		return await wallet.save();
+		const w = await wallet.save();
+		const fullWalletDetails = await getWalletWithDetails(w._id);
+		await onAddingTransaction(fullWalletDetails);
+		return fullWalletDetails;
 	} catch (error) {
 		console.error(error);
 
@@ -139,4 +142,14 @@ export async function addTag(walletId: any, tagPayLoad: any) {
 		console.error(error);
 		return null;
 	}
+}
+
+async function onAddingTransaction(updatedWallet: any) {
+	if (!updatedWallet) return;
+	const filename = getFileName(updatedWallet._id);
+	const response = await putObjectToS3(filename, JSON.stringify(updatedWallet), "text/json");
+	console.log();
+	console.log(getFilePath(updatedWallet._id));
+
+	return response;
 }

@@ -1,5 +1,5 @@
 import { Wallet } from "../models/Wallet";
-import { syncWallet, getWalletFromS3, createWalletEntry, addTranaction, addTag } from "../services/wallet.service";
+import { syncWallet, getWalletFromS3, createWalletEntry, addTransaction, addTag } from "../services/wallet.service";
 import { Request, Response } from "express";
 
 export async function getWalletController(req: Request, res: Response) {
@@ -21,7 +21,7 @@ export async function createWallet(req: Request, res: Response) {
 
 export async function addTranactionToWallet(req: Request, res: Response) {
 	const {} = req.body;
-	const wallet = await addTranaction(req.params.id, req.body);
+	const wallet = await addTransaction(req.params.id, req.body);
 	if (!wallet) return res.status(400).json("error");
 	res.json(wallet);
 }
