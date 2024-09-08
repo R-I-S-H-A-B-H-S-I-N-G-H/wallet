@@ -140,7 +140,7 @@ export async function addTag(walletId: any, tagPayLoad: any) {
 		const w = await wallet.save();
 		const fullWalletDetails = await getWalletWithDetails(w._id);
 		await onAddingTransaction(fullWalletDetails);
-		return fullWalletDetails;
+		return tag;
 	} catch (error) {
 		console.error(error);
 		return null;
