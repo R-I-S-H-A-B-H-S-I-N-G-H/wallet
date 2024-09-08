@@ -18,6 +18,10 @@ const transactionSchema = new mongoose.Schema({
 		ref: "Tag", // Linking to Tag schema
 		required: true,
 	},
+	type: {
+		type: String,
+		required: true,
+	},
 });
 
 const TransactionSchema = mongoose.model("Transaction", transactionSchema);
