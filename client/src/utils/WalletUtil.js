@@ -3,6 +3,10 @@ export class WalletUtil {
 		this.wallet = wallet;
 	}
 
+	getWalletId() {
+		return this.wallet?._id;
+	}
+
 	getTransactions() {
 		return WalletUtil.getTransactions(this.wallet);
 	}
@@ -45,6 +49,10 @@ export class WalletUtil {
 
 	static getTags(wallet) {
 		return wallet?.tags;
+	}
+
+	static getTagAmount(tag) {
+		return tag.amount;
 	}
 
 	static getTotalBudget(transactionRecords) {

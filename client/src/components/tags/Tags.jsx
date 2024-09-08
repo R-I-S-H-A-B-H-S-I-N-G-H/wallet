@@ -10,14 +10,13 @@ export default function Tags(props) {
 	if (!tag || !transactions || !Array.isArray(transactions) || transactions.length == 0) return <></>;
 
 	function getSpendingPercentage() {
-		return (100 * WalletUtil.getTotalSpending(transactions)) / WalletUtil.getTotalBudget(transactions);
+		return (100 * WalletUtil.getTotalSpending(transactions)) / WalletUtil.getTagAmount(tag);
 	}
 
 	return (
 		<div className={style.container}>
-			{/* <h2>{`NAME :: ${name} and total value is ${value}`}</h2> */}
 			<ProgressLine
-				label={tagName}
+				label={`${tagName}-${WalletUtil.getTagAmount(tag)}`}
 				backgroundColor="lightgreen"
 				visualParts={[
 					{
