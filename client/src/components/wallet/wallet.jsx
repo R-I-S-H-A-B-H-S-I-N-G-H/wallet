@@ -9,6 +9,7 @@ import Modal from "react-modal";
 import Select from "react-dropdown-select";
 
 export default function Wallet() {
+	const walletId = "66ddc88399b3e9f524271921";
 	const [wallet, setWallet] = useState(null);
 	const [createTagModal, setCreateTagModal] = useState(false);
 	const [createExpenseModal, setCreateExpenseModal] = useState(false);
@@ -23,7 +24,7 @@ export default function Wallet() {
 	async function getWallet() {
 		// const walletResp = await WalletService.getWallet("f14c8ab0-1b9b-4fc6-833d-8c01c3658bec");
 		// 66dd5073ce87e6dc1cc40622
-		const walletResp = await WalletService.getWallet("66dd696168ec19d07dfd46bf");
+		const walletResp = await WalletService.getWallet(walletId);
 
 		const walletutil = new WalletUtil(walletResp);
 		setWallet(walletutil);
@@ -48,7 +49,7 @@ export default function Wallet() {
 
 	async function saveTag() {
 		console.log(newtag);
-		const savedTag = await WalletService.addTag(wallet?.getWalletId(), newtag);
+		const savedTag = await WalletService.addTag(walletId, newtag);
 		console.log(savedTag);
 		await getWallet();
 		setCreateTagModal(false);
@@ -56,7 +57,7 @@ export default function Wallet() {
 
 	async function saveTransaction() {
 		console.log(newtransaction);
-		const savedTransaction = await WalletService.addTransaction(wallet?.getWalletId(), newtransaction);
+		const savedTransaction = await WalletService.addTransaction(walletId, newtransaction);
 		console.log(savedTransaction);
 		await getWallet();
 		setCreateExpenseModal(false);

@@ -1,9 +1,14 @@
 import { Wallet } from "../models/Wallet";
-import { syncWallet, getWalletFromS3, createWalletEntry, addTransaction, addTag } from "../services/wallet.service";
+import { syncWallet, getWalletFromS3, createWalletEntry, addTransaction, addTag, getWalletWithDetails } from "../services/wallet.service";
 import { Request, Response } from "express";
 
 export async function getWalletController(req: Request, res: Response) {
 	const response = await getWalletFromS3(req.params.id);
+	res.json(response);
+}
+
+export async function getWalletFromDbController(req: Request, res: Response) {
+	const response = await getWalletWithDetails(req.params.id);
 	res.json(response);
 }
 
