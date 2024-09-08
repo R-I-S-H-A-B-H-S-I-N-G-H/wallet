@@ -10,8 +10,6 @@ export default function Tags(props) {
 	if (!tag || !transactions || !Array.isArray(transactions) || transactions.length == 0) return <></>;
 
 	function getSpendingPercentage() {
-		console.log(WalletUtil.getTotalSpending(transactions) / WalletUtil.getTotalBudget(transactions));
-
 		return (100 * WalletUtil.getTotalSpending(transactions)) / WalletUtil.getTotalBudget(transactions);
 	}
 
