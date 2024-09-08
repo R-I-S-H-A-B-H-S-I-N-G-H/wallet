@@ -3,7 +3,7 @@ import { syncWalletController, getWalletController, createWallet, addTranactionT
 const walletRouter = Router();
 
 walletRouter.get("/:id", getWalletController);
-walletRouter.post("/", syncWalletController);
+// walletRouter.post("/", syncWalletController);
 walletRouter.post("/", createWallet);
 walletRouter.put("/:id/addTransaction", addTranactionToWallet);
 walletRouter.put("/:id/addTag", addTagToWallet);
