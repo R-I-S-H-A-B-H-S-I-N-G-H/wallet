@@ -17,7 +17,11 @@ export default function Wallet() {
 	}, []);
 
 	async function getWallet() {
-		const walletResp = await WalletService.getWallet("f14c8ab0-1b9b-4fc6-833d-8c01c3658bec");
+		// const walletResp = await WalletService.getWallet("f14c8ab0-1b9b-4fc6-833d-8c01c3658bec");
+		// 66dd5073ce87e6dc1cc40622
+		const walletResp = await WalletService.getWallet("66dd68042e76ce9fc45fab55");
+
+
 		const walletutil = new WalletUtil(walletResp);
 		setWallet(walletutil);
 	}

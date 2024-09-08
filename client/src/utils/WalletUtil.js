@@ -1,5 +1,8 @@
 export class WalletUtil {
 	constructor(wallet) {
+		console.log("====================================");
+		console.log(wallet);
+		console.log("====================================");
 		this.wallet = wallet;
 	}
 
@@ -68,7 +71,7 @@ export class WalletUtil {
 	}
 
 	static getTransactions(wallet) {
-		return wallet?.transactionRecord;
+		return wallet?.transactions;
 	}
 
 	static getTagTransactions(tag, transactionRecords = []) {
