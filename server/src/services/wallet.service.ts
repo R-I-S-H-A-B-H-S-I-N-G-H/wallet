@@ -108,8 +108,8 @@ export async function addTransaction(walletId: string, transactionPayLoad: any) 
 	try {
 		const w = await wallet.save();
 		const fullWalletDetails = await getWalletWithDetails(w._id);
-		await onAddingTransaction(fullWalletDetails);
-		return fullWalletDetails;
+		onAddingTransaction(fullWalletDetails);
+		return transaction;
 	} catch (error) {
 		console.error(error);
 
@@ -139,7 +139,7 @@ export async function addTag(walletId: any, tagPayLoad: any) {
 	try {
 		const w = await wallet.save();
 		const fullWalletDetails = await getWalletWithDetails(w._id);
-		await onAddingTransaction(fullWalletDetails);
+		onAddingTransaction(fullWalletDetails);
 		return tag;
 	} catch (error) {
 		console.error(error);
