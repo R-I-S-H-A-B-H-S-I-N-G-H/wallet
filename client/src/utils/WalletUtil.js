@@ -1,8 +1,5 @@
 export class WalletUtil {
 	constructor(wallet) {
-		console.log("====================================");
-		console.log(wallet);
-		console.log("====================================");
 		this.wallet = wallet;
 	}
 
@@ -15,7 +12,7 @@ export class WalletUtil {
 	}
 
 	getTotalBudget() {
-		const transactionRecords = this.wallet.transactionRecord;
+		const transactionRecords = this.getTransactions();
 		return WalletUtil.getTotalBudget(transactionRecords);
 	}
 
@@ -41,7 +38,7 @@ export class WalletUtil {
 
 		let total = 0;
 		for (const tag of tags) {
-			total += tag.value;
+			total += tag.amount;
 		}
 		return total;
 	}
@@ -65,8 +62,6 @@ export class WalletUtil {
 	}
 
 	static getTotalMoneyLeft(transactionRecords) {
-		console.log(transactionRecords, WalletUtil.getTotalBudget(transactionRecords), WalletUtil.getTotalSpending(transactionRecords));
-
 		return WalletUtil.getTotalBudget(transactionRecords) - WalletUtil.getTotalSpending(transactionRecords);
 	}
 
@@ -76,7 +71,7 @@ export class WalletUtil {
 
 	static getTagTransactions(tag, transactionRecords = []) {
 		if (!tag) return [];
-		return transactionRecords.filter((transactionRecord) => transactionRecord.tag === tag.name);
+		return transactionRecords.filter((transactionRecord) => transactionRecord.tag === tag._id);
 	}
 
 	canAddTag(tagAmount) {
